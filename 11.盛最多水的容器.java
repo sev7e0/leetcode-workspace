@@ -9,6 +9,8 @@ class Solution {
     public int maxArea(int[] height) {
         int left = 0, right = height.length - 1, maxArea = 0;
         //使用双指针进行遍历
+        //双指针是真从两个方向进行遍历，快慢指针是指
+        //从一个方向一快一慢进行遍历
         while (left < right) {
             int l = height[left];
             int r = height[right];

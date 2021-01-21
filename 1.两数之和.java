@@ -13,7 +13,7 @@ class Solution {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
             int min = target-nums[i];
-            //使用containsKey代替!= 判断
+            //使用containsKey代替 != 判断
             if(map.containsKey(min)){
                 return new int[]{map.get(min), i};
             }
