@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +13,6 @@ class Solution {
     List<List<Integer>> result = new ArrayList<>();
 
     public List<List<Integer>> subsets(int[] nums) {
-        Arrays.sort(nums);
         List<Integer> supportList = new ArrayList<>();
         if (Objects.isNull(nums) || nums.length == 0) {
             return result;
