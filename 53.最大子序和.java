@@ -12,12 +12,12 @@ class Solution {
      * @return
      */
     public int maxSubArray(int[] nums) {
-        int max= nums[0],temp=nums[0];
+        int max = nums[0], temp = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            if (temp>0 ) {
-                temp+=nums[i];
-            }else{
-                temp = nums[i]; 
+            if (temp > 0) {
+                temp += nums[i];
+            } else {
+                temp = nums[i];
             }
             max = Math.max(temp, max);
         }
@@ -25,4 +25,3 @@ class Solution {
     }
 }
 // @lc code=end
-
