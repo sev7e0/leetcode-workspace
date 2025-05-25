@@ -5,22 +5,21 @@
  */
 
 // @lc code=start
+
+import java.util.Arrays;
+
 class Solution {
     public void moveZeroes(int[] nums) {
-        int length;
-        if (nums == null || (length = nums.length) == 0) {
+        if (nums.length == 1) {
             return;
         }
-        int j = 0;
-        for (int i = 0; i < length; i++) {
+        int stackSize = 0;
+        for (int i = 0; i < nums.length; i++) {
             if (nums[i] != 0) {
-                if (i >                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 j) {// #1
-                    nums[j] = nums[i];
-                    nums[i] = 0;
-                }
-                j++;
+                nums[stackSize++] = nums[i];
             }
         }
+        Arrays.fill(nums, stackSize, nums.length, 0);
     }
 }
 // @lc code=end
