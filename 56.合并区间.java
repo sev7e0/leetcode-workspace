@@ -12,25 +12,23 @@ import java.util.List;
 // @lc code=start
 class Solution {
     public int[][] merge(int[][] intervals) {
-        if (intervals == null || intervals.length==0) {
-            return intervals;
-        }
+        Arrays.sort(intervals, Comparator.comparing(a -> a[0]));
+        ArrayList<int[]> arrayList = new ArrayList<>();
         int len = intervals.length;
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
-        List<int[]> res = new ArrayList<>();
-        for (int i = 0; i < len - 1; i++) {
-            if (intervals[i][1] >= intervals[i + 1][0]) {
-                //根据每个数组0位置上排序，那么存在重叠的数组需要根据
-                //两个数组右边界最大的，来决定新的数组的右边界
-                int[] a = {intervals[i][0], Math.max(intervals[i + 1][1], intervals[i][1])};
-                //并将新的数组放置到i+1的位置，也就是下一次遍历开始的位置
-                intervals[i+1] = a;
+        int[] cur = intervals[0]; // 初始化
+        for (int right = 1; right < len; right++) {
+            if (cur[1] >= intervals[right][0]) {
+                // 判定前后两个的右边界哪个大
+                cur[1] = Math.max(cur[1], intervals[right][1]);
             } else {
-                res.add(intervals[i]);
+                /// 把 cur 加入结果列表，重新启动一段 cur
+                arrayList.add(cur);
+                cur = intervals[right];
             }
         }
-        res.add(intervals[len-1]);
-        return res.toArray(new int[res.size()][2]);
+        // 把cur加入结果
+        arrayList.add(cur);
+        return arrayList.toArray(new int[arrayList.size()][2]);
     }
 
 }
